@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import './Navbar.css'
+import './Navbar.css';
+import SearchIcon from "@material-ui/icons/Search";
 
 const Navbar = () => {
     const [show, handleShow] = useState(false);
@@ -23,6 +24,9 @@ const Navbar = () => {
                 alt="Netflix Logo"
             />
 
+            <span className='searchbar'>
+                <input type="text"></input><button><SearchIcon /></button>
+            </span>
             <img
                 className='nav_avatar'
                 //src="https://pbs.twimg.com/profile_images/124011999041155"
@@ -36,4 +40,4 @@ const Navbar = () => {
     )
 }
 
-export default Navbar
+export default Navbar;

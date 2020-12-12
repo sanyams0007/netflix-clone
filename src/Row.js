@@ -10,6 +10,12 @@ const base_url = "https://image.tmdb.org/t/p/original/";
 const Row = ({ title, fetchUrl, isLargeRow }) => {
     const [movies, setMovies] = useState([]);
     const [trailerUrl, setTrailerUrl] = useState('');
+    const [overview, setOverview] = useState('off');
+    const [feature, setFeature] = useState({
+        title: "",
+        plot: "",
+        wall: "",
+    });
 
     // a snippet of code which runs based on a condition
     useEffect(() => {
@@ -30,11 +36,12 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
         },
     };
 
-    const handleClick = (movie) => {
+    const playTrailer = (movie) => {
         if (trailerUrl) {
             setTrailerUrl('');
         } else {
-            movieTrailer(movie?.name || movie?.title || movie?.original_name || "")
+            /*  movieTrailer(movie?.name || movie?.title || movie?.original_name || "") */
+            movieTrailer(movie || "")
                 .then(url => {
                     const urlParams = new URLSearchParams(new URL(url).search);
                     setTrailerUrl(urlParams.get('v'));
@@ -43,6 +50,27 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
                 .catch((error) => console.log(error));
         }
     }
+
+    const handleClick = (movie) => {
+        if (overview === 'on') {
+            setOverview("off");
+        } else {
+            setOverview(overview === "on" ? "off" : "on");
+            setFeature(() => {
+                return {
+                    title: movie?.name || movie?.title || movie?.original_name,
+                    plot: movie?.overview,
+                    wall: `${base_url}${movie.backdrop_path}`,
+                }
+            });
+        }
+
+    }
+
+    function truncate(str, n) {
+        return str?.length > n ? str.substr(0, n - 1) + "..." : str;
+    }
+    //{truncate(movie?.overview, 500)}
     //console.log(movies);
     //console.table(movies);
 
@@ -50,24 +78,31 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
         <div className='row'>
             <h2>{title}</h2>
 
-            <div className='row_posters'>
+            {/* <div className='row_posters'>
                 {movies.map(movie => {
                     return (
                         <div className='additional'>
                             <img
                                 key={movie.id}
                                 onClick={() => handleClick(movie)}
+                                 onClick={() => handleClick(movie)} 
                                 className={`row_poster ${isLargeRow && 'row_posterLarge'}`}
                                 src={`${base_url}${isLargeRow ? movie.poster_path : movie.backdrop_path}`}
                                 alt={movie.name}
                             />
                             <h5 className="row_movie_title">{movie?.name || movie?.title || movie?.original_name}</h5>
+                            <div className={`overview overview_${overview}`}>
+                                <Overview
+                                    movie={movie}
+                                    update={handleClick}
+                                />
+                            </div>
                         </div>
                     )
                 })}
+            </div> */}
 
-            </div>
-            {/* <div className='row_posters'>
+            <div className='row_posters'>
                 {movies.map(movie => (
                     <img
                         key={movie.id}
@@ -77,7 +112,28 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
                         alt={movie.name}
                     />
                 ))}
-            </div> */}
+            </div>
+
+            <div className={`feature overview_${overview}`}>
+                <div className="left">
+                    <h2>{feature?.title}</h2>
+                    <p>{feature.plot}{truncate(feature?.plot, 450)}</p>
+                    <button className='play_button'
+                        onClick={() => playTrailer(feature?.title)}
+                    >
+                        Play
+                    </button>
+                    <button className='play_button'
+                        onClick={handleClick}
+                    >
+                        Close
+                </button>
+                </div>
+                <img
+                    className='right'
+                    src={feature?.wall}
+                />
+            </div>
 
             {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
 
