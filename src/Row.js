@@ -52,6 +52,7 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
     }
 
     const handleClick = (movie) => {
+        setTrailerUrl('');
         if (overview === 'on') {
             setOverview("off");
         } else {
