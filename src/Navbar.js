@@ -4,6 +4,8 @@ import SearchIcon from "@material-ui/icons/Search";
 
 const Navbar = () => {
     const [show, handleShow] = useState(false);
+    const [searchMovie, setSearchMovie] = useState('')
+
 
     useEffect(() => {
         window.addEventListener('scroll', () => {
@@ -25,7 +27,12 @@ const Navbar = () => {
             />
 
             <span className='searchbar'>
-                <input type="text"></input><button><SearchIcon /></button>
+                <input
+                    type="text"
+                    value={searchMovie}
+
+                >
+                </input><button><SearchIcon /></button>
             </span>
             <img
                 className='nav_avatar'

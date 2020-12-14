@@ -60,7 +60,7 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
                 return {
                     title: movie?.name || movie?.title || movie?.original_name,
                     plot: movie?.overview,
-                    wall: `${base_url}${movie.backdrop_path}`,
+                    wall: `${base_url}${!isLargeRow ? movie.poster_path : movie.backdrop_path}`,//`${base_url}${isLargeRow ? movie.poster_path : movie.backdrop_path}`
                 }
             });
         }
@@ -104,20 +104,23 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
 
             <div className='row_posters'>
                 {movies.map(movie => (
-                    <img
-                        key={movie.id}
-                        onClick={() => handleClick(movie)}
-                        className={`row_poster ${isLargeRow && 'row_posterLarge'}`}
-                        src={`${base_url}${isLargeRow ? movie.poster_path : movie.backdrop_path}`}
-                        alt={movie.name}
-                    />
+                    <div className='movie_container'>
+                        <img
+                            key={movie.id}
+                            onClick={() => handleClick(movie)}
+                            className={`row_poster ${isLargeRow && 'row_posterLarge'}`}
+                            src={`${base_url}${isLargeRow ? movie.poster_path : movie.backdrop_path}`}
+                            alt={movie.name}
+                        />
+                        <h5 className="row_movie_title">{movie?.name || movie?.title || movie?.original_name}</h5>
+                    </div>
                 ))}
             </div>
 
             <div className={`feature overview_${overview}`}>
                 <div className="left">
                     <h2>{feature?.title}</h2>
-                    <p>{feature.plot}{truncate(feature?.plot, 450)}</p>
+                    <p>{feature.plot}{truncate(feature?.plot, 500)}</p>
                     <button className='play_button'
                         onClick={() => playTrailer(feature?.title)}
                     >
