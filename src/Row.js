@@ -60,7 +60,7 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
                 return {
                     title: movie?.name || movie?.title || movie?.original_name,
                     plot: movie?.overview,
-                    wall: `${base_url}${!isLargeRow ? movie.poster_path : movie.backdrop_path}`,//`${base_url}${isLargeRow ? movie.poster_path : movie.backdrop_path}`
+                    wall: `${base_url}${!isLargeRow ? movie.poster_path : movie.backdrop_path}`,
                 }
             });
         }
@@ -135,6 +135,7 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
                 <img
                     className='right'
                     src={feature?.wall}
+                    alt='Movie Wall'
                 />
             </div>
 

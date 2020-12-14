@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './Navbar.css';
-import SearchIcon from "@material-ui/icons/Search";
+//import SearchIcon from "@material-ui/icons/Search";
 
 const Navbar = () => {
     const [show, handleShow] = useState(false);
-    const [searchMovie, setSearchMovie] = useState('')
+    /* const [searchMovie, setSearchMovie] = useState('') */
 
 
     useEffect(() => {
@@ -26,14 +26,9 @@ const Navbar = () => {
                 alt="Netflix Logo"
             />
 
-            <span className='searchbar'>
-                <input
-                    type="text"
-                    value={searchMovie}
-
-                >
-                </input><button><SearchIcon /></button>
-            </span>
+            {/* <span className='searchbar'>
+                <input type="text"></input><button><SearchIcon /></button>
+            </span> */}
             <img
                 className='nav_avatar'
                 //src="https://pbs.twimg.com/profile_images/124011999041155"
