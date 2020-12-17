@@ -6,7 +6,6 @@ import Banner from './Banner';
 import Navbar from './Navbar';
 
 
-
 function App() {
   return (
     <div className="app">

@@ -108,6 +108,7 @@
 @media screen and (max-width: 600px) {
   .overview_on {
     display: grid;
+    place-items: center;
   }
   .feature {
     grid-template-columns: 1fr;
