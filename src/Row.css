@@ -103,12 +103,12 @@
   margin-top: 10px;
 }
 
-.movie-genre > span:nth-child(even),
+.movie-genre > p > span:nth-child(even),
 .movie-lang > p > span:nth-child(even) {
   margin: 10px;
 }
 
-.movie-genre > span,
+.movie-genre > p > span,
 .movie-lang > p > span {
   background-color: #222;
   color: #3d5af1;

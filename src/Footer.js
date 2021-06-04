@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer class="footer">
+    <footer className="footer">
       <p>Questions? Call 000-800-040-1843</p>
-      <div class="footer-cols">
+      <div className="footer-cols">
         <ul>
           <li>
             <Link to="/app">FAQ</Link>

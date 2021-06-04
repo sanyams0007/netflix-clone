@@ -5,6 +5,10 @@
 /.pnp
 .pnp.js
 
+#etc
+.vscode
+.firebase
+
 # testing
 /coverage
 

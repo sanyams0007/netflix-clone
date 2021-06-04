@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+# Netflix Clone App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### [Live Site](https://netflic-challenge-clone.web.app/)
 
-## Available Scripts
+## Screens
 
-In the project directory, you can run:
+![home](https://res.cloudinary.com/ignitegaming/image/upload/v1622831850/projects/Netflix%20Clone/localhost_3000_-min_mvmtkd.png)
 
-### `npm start`
+![home](https://res.cloudinary.com/ignitegaming/image/upload/v1622831470/projects/Netflix%20Clone/main-min_gm1ewp.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![home](https://res.cloudinary.com/ignitegaming/image/upload/v1622831380/projects/Netflix%20Clone/main4-min_bkyuca.png)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![home](https://res.cloudinary.com/ignitegaming/image/upload/v1622831551/projects/Netflix%20Clone/main3-min_f8vsmv.png)
 
-### `npm test`
+## Introduction
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Cloned a popular movie app that is able to retrieve and render movie info using TMDB API also added trailer viewing functionality to it. Fetches trending movies around globe. Extracted required data and displayed it and all without using a Database.
 
-### `npm run build`
+## Run Locally
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 1. Clone repo
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+$ git clone git@github.com:sanyams0007/netflix-clone.git
+$ cd netflix-clone
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 2. Setup:
 
-### `npm run eject`
+- Create .env file in root folder and set `REACT_APP_API_KEY=YOUR_TMDB_API_KEY`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- run `npm i && npm start` in root folder to start the app
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## TechStack:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+React.js, Firebase
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Learning
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+build on my way to understand async API utilization using axios and handling fetched data carefully for succesfull UI rendering using it.

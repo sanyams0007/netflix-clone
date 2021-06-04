@@ -33,7 +33,6 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
     //if [] run once when the row loads, and dont run again
     async function fetchData() {
       const request = await axios.get(fetchUrl);
-      console.table(request.data.results);
       setMovies(request.data.results);
       return request;
     }
@@ -66,13 +65,13 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
       return;
     }
 
+    // getting dynaic url based on input click
     const isMovieOrSeries =
       movie.first_air_date !== undefined ? "/tv/" : "/movie/";
-
     const finalUrl = `${url}${isMovieOrSeries}${movie.id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&append_to_response=videos,images&include_image_language=en,null`;
     const { data } = await axios.get(finalUrl);
-    console.log(data);
 
+    // converting time from minutes to hours and minutes
     const time = data?.runtime || data?.episode_run_time;
     const hour =
       Math.floor(Number(time) / 60) >= 1
@@ -81,6 +80,7 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
     const minute = Number(time) % 60 >= 1 ? `${Number(time) % 60}m` : "";
     const runtime = `${hour} ${minute}`;
 
+    // getting random wall
     const wall = `${backdrop_url}${
       data.images.backdrops[
         Math.floor(Math.random() * data.images.backdrops.length)
@@ -113,7 +113,7 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
 
       <div className="row_posters">
         {movies.map((movie) => (
-          <div className="movie_container">
+          <div key={movie.id} className="movie_container">
             <img
               key={movie.id}
               onClick={() => handleClick(movie)}
@@ -143,9 +143,12 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
                   <h3 className="tagline">{feature?.tagline}</h3>
                 )}
                 <div className="movie-genre">
-                  {feature?.genres.map((genre) => (
-                    <span key={genre?.name}>{genre?.name}</span>
-                  ))}
+                  <p>
+                    Genres :{" "}
+                    {feature?.genres.map((genre) => (
+                      <span key={genre?.name}>{genre?.name}</span>
+                    ))}
+                  </p>
                 </div>
                 <div
                   className="movie-meta"
