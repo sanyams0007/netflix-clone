@@ -1,176 +1,221 @@
- a{
-    color:white;
-    text-decoration: none;
+a {
+  color: white;
+  text-decoration: none;
 }
 
 h1 {
-    color: #fff;
+  color: #fff;
 }
 
-p{
-    margin:0.5rem 0;
+h2 {
+  color: #fff;
 }
 
-/* img{
-    width: 100%;
-} */ 
+p {
+  margin: 0.5rem 0;
+}
 
+.showcase {
+  border-bottom: 8px solid #222;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  background: url(https://assets.nflxext.com/ffe/siteui/vlv3/a6fede83-60f5-4588-93a1-b82b099db1d0/1433665a-7a7f-4b2e-867e-ee0433a00554/IN-en-20200720-popsignuptwoweeks-perspective_alpha_website_small.jpg)
+    no-repeat center center/cover;
+}
 
-.showcase{
-    width: 100%;
+.showcase-top {
+  z-index: 2;
+  position: relative;
+  height: 90px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 3rem;
+}
+
+.showcase-top img {
+  width: 170px;
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+}
+
+.showcase-content {
+  z-index: 2;
+  position: relative;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 9rem;
+}
+
+.showcase-content h1 {
+  font-weight: 700;
+  font-size: 4.2rem;
+  width: 50%;
+  line-height: 1.1;
+  margin: 0 0 2rem 0;
+}
+
+.showcase-content h2 {
+  color: white;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.25;
+  margin: 0 0 2rem;
+}
+
+.showcase::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow: inset 120px 100px 250px #000000, inset -120px -100px 250px #000000;
+}
+
+.btn {
+  display: inline-block;
+  background: #e50914;
+  color: white;
+  padding: 0.4rem 1.3rem;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  outline: none;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.45);
+  border-radius: 2px;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn-rounded {
+  border-radius: 5px;
+}
+
+.btn-xl {
+  font-size: 1.8rem;
+  padding: 1.2rem 2rem;
+  text-transform: uppercase;
+}
+
+.story-card {
+  padding: 70px 45px;
+  border-bottom: 8px solid #222;
+}
+
+.story-content {
+  max-width: 75%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.story-card:nth-child(odd) .story-content-text {
+  order: 1;
+}
+
+.story-content > * {
+  width: 50%;
+}
+.story-content-text {
+  padding-right: 50px;
+}
+
+.story-content-image img {
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.story-content-text h1 {
+  font-size: 3.5rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.story-content-text h2 {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+@media (max-width: 960px) {
+  .showcase {
     height: 100vh;
-    position: relative;
-    background: url(https://assets.nflxext.com/ffe/siteui/vlv3/a6fede83-60f5-4588-93a1-b82b099db1d0/1433665a-7a7f-4b2e-867e-ee0433a00554/IN-en-20200720-popsignuptwoweeks-perspective_alpha_website_small.jpg) no-repeat center center/cover;
-}
+  }
 
+  .showcase-content h1 {
+    font-size: 3.5rem;
+    line-height: 1;
+    width: 80%;
+  }
 
-.showcase-top{
-    z-index: 2;
-    position: relative;
-    height: 90px;
-}
+  .showcase-content h2 {
+    font-size: 1.5rem;
+  }
 
-.showcase-top img{
-    width: 170px;
-    position: absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-
-}
-
-.showcase-top .log{
+  .story-content {
     text-align: center;
-    position: absolute;
-    top:50%;
-    right:0;
-    transform: translate(-50%,-50%);
-}
+  }
 
-.showcase-content{
-    z-index: 2;
-    position: relative;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-top: 9rem;
-}
+  .story-content-text {
+    padding: 0;
+    margin-bottom: 20px;
+  }
 
-.showcase-content h1{
-    font-weight: 700;
-    font-size: 5.2rem;
-    line-height: 1.1;
-    margin: 0 0 2rem 0;
-}
-
-.showcase-content p{
-    text-transform: uppercase;
-    color: white;
-    font-weight: 400;
-    font-size: 1.9rem;
-    line-height: 1.25;
-    margin: 0 0 2rem;
-}
-
-.showcase::after{
-    content:"";
-    position: absolute;
-    top: 0;
-    left: 0;
+  .story-content > * {
     width: 100%;
-    height: 100%;
-    z-index: 1;
-    background: rgba(0,0,0,0.6);
-    box-shadow: inset 120px 100px 250px #000000,inset -120px -100px 250px #000000;
+  }
+
+  .story-card:nth-child(odd) .story-content-text {
+    order: unset;
+  }
+
+  .btn-xl {
+    font-size: 1.5rem;
+    padding: 1.1rem 2rem;
+  }
 }
 
-.btn{
-    display: inline-block;
-    background:#e50914;
-    color: white;
-    padding: .4rem 1.3rem;
-    text-align: center;
-    border: none;
-    cursor: pointer;
-    margin-right: .5rem;
-    outline:none;
-    box-shadow: 0 1px 0 rgba(0,0,0,.45);
-    border-radius: 2px;
-}
-
-.btn:hover{
-    opacity: .9;
-}
-
-.btn-rounded{
-    border-radius: 5px;
-}
-
-.btn-xl{
-    font-size: 2rem;
-    padding: 1.5rem 2.1rem;
-    text-transform: uppercase;
-}
-
-@media(max-width:960px){
-    .showcase{
-        height: 100vh;
-    }
-
-    /* .hide-sm{
-        display: none;
-    } */
-
-    .showcase-top img{
-        top: 30%;
-        left: 5%;
-        transform: translate(0);
-    }
-
-    .showcase-content h1{
-        font-size: 3.7rem;
-        line-height: 1;
-    }
-
-    .showcase-content p{
-        font-size: 1.5rem;
-    }
-
-    
-    .btn-xl{
-        font-size: 1.5rem;
-        padding: 1.4rem 2rem ;
-    }
-}
-
-@media(max-width: 700px) {
-    .showcase::after{
+@media (max-width: 700px) {
+  .showcase::after {
     box-shadow: inset 80px 80px 250px #000000, inset -80px -80px 250px #000000;
-    }
+  }
 }
 
+@media (max-width: 450px) {
+  .showcase-top img {
+    width: 100px;
+  }
+  .showcase::after {
+    box-shadow: inset 10px 10px 50px #000000, inset -10px -10px 50px #000000;
+  }
 
-
-@media(max-width: 450px){
-    .showcase-top img{
-        width: 100px;
-    }
-    .showcase::after{
-        box-shadow: inset 10px 10px 50px #000000, inset -10px -10px 50px #000000;
-    }
-    .btn-rounded{
-        border-radius: 2px;
-    }
-    .btn{
-        padding: .4rem 1rem;
-        margin-right: .3rem;
-        box-shadow: 0 .5px 0 rgba(0,0,0,.25);
-    }
-    .btn-xl{
-        font-size: 1.3rem;
-        padding: 1rem 1.5rem;
-    }
+  .story-content-text h1 {
+    font-size: 2rem;
+  }
+  .btn-rounded {
+    border-radius: 2px;
+  }
+  .btn {
+    padding: 0.4rem 1rem;
+    margin-right: 0.3rem;
+    box-shadow: 0 0.5px 0 rgba(0, 0, 0, 0.25);
+  }
+  .btn-xl {
+    font-size: 1.3rem;
+    padding: 1rem 1.5rem;
+  }
 }
