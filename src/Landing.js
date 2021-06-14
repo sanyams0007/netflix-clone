@@ -33,35 +33,43 @@ const Landing = () => {
             </h2>
           </div>
           <div className="story-content-image">
-            <img src="/images/card1.jpg" alt="" />
+            <img
+              src="https://res.cloudinary.com/ignitegaming/image/upload/v1622833482/projects/Netflix%20Clone/card1_sh5sak.jpg"
+              alt="story-content-image1"
+            />
           </div>
         </div>
       </div>
       <div className="story-card">
         <div className="story-content">
           <div className="story-content-text">
-            <h1>Enjoy on Your Tv</h1>
+            <h1>Download your shows to watch offline.</h1>
             <h2>
-              Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV,
-              Blu-ray players and more.
+              Save your favourites easily and always have something to watch.
             </h2>
           </div>
-          <div className="story-content-image">
-            <img src="/images/card2.jpg" alt="" />
+          <div className="story-content-image2">
+            <img
+              src="https://res.cloudinary.com/ignitegaming/image/upload/v1622833484/projects/Netflix%20Clone/card2_oukrbd.jpg"
+              alt="story-content-image2"
+            />
           </div>
         </div>
       </div>
       <div className="story-card">
         <div className="story-content">
           <div className="story-content-text">
-            <h1>Enjoy on Your Tv</h1>
+            <h1>Watch everywhere.</h1>
             <h2>
-              Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV,
-              Blu-ray players and more.
+              Stream unlimited movies and TV shows on your phone, tablet,
+              laptop, and TV.
             </h2>
           </div>
           <div className="story-content-image">
-            <img src="/images/card3.jpg" alt="" />
+            <img
+              src="https://res.cloudinary.com/ignitegaming/image/upload/v1622833488/projects/Netflix%20Clone/card3_axmqrk.jpg"
+              alt="story-content-image3"
+            />
           </div>
         </div>
       </div>

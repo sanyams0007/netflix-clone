@@ -161,7 +161,7 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
 
                 <div className="movie-lang">
                   <p>
-                    Availaible In :{" "}
+                    Available In :{" "}
                     {feature?.spoken_lang.map((lang) => (
                       <span
                         style={{ color: "#d72323" }}
