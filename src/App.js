@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Row from "./Row";
 import requests from "./requests";
@@ -6,9 +6,11 @@ import Banner from "./Banner";
 import Navbar from "./Navbar";
 
 function App() {
+  const [searchData, setSearchData] = useState([]);
+
   return (
     <div className="app">
-      <Navbar />
+      <Navbar searchData={searchData} setSearchData={setSearchData} />
       <Banner />
       <Row
         title="NETFLIX ORIGINAL"

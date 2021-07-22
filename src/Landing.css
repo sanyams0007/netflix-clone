@@ -129,7 +129,7 @@ p {
 }
 
 .story-content > * {
-  width: 50%;
+  flex-basis: 50%;
 }
 .story-content-text {
   padding-right: 50px;
@@ -176,7 +176,7 @@ p {
   }
 
   .story-content > * {
-    width: 100%;
+    flex-basis: 100%;
   }
 
   .story-card:nth-child(odd) .story-content-text {
@@ -190,6 +190,9 @@ p {
 }
 
 @media (max-width: 700px) {
+  .story-card {
+    padding: 40px 10px;
+  }
   .showcase::after {
     box-shadow: inset 80px 80px 250px #000000, inset -80px -80px 250px #000000;
   }

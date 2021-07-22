@@ -48,7 +48,7 @@ const Landing = () => {
               Save your favourites easily and always have something to watch.
             </h2>
           </div>
-          <div className="story-content-image2">
+          <div className="story-content-image">
             <img
               src="https://res.cloudinary.com/ignitegaming/image/upload/v1622833484/projects/Netflix%20Clone/card2_oukrbd.jpg"
               alt="story-content-image2"

@@ -31,28 +31,33 @@
   object-fit: contain;
 }
 
-/* .searchbar {
-    display: flex;
-    position: absolute;
-    right: 110px;
+.searchbar {
+  display: flex;
+  position: absolute;
+  right: 110px;
+  border-radius: 5px;
+  overflow: auto;
 }
 
-.searchbar > input[type=text] {
- position: relative;
- padding: 5px;
- border: none;
- border-bottom-left-radius: 10px;
- border-top-left-radius: 10px;
- outline: none;
- font-size: 16px;
+.searchbar > input[type="text"] {
+  position: relative;
+  padding: 10px;
+  border: none;
+  outline: none;
 }
 
 .searchbar > button {
-    font-size: 10px;
-    padding: 4px;
-    border: none;
-    cursor: pointer;
-    border-bottom-right-radius: 10px;
-    border-top-right-radius: 10px;
+  padding: 5px;
+  border: none;
+  cursor: pointer;
 }
- */
+
+.fa-search {
+  font-size: 20px;
+}
+
+@media screen and (max-width: 480px) {
+  .searchbar {
+    display: none;
+  }
+}

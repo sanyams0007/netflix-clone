@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  overflow: hidden;
 }
 
 .banner_contents {
@@ -19,7 +20,7 @@
 .banner_description {
   padding-top: 1rem;
   font-size: 20px;
-  height: 80px;
+  height: auto;
   width: 50%;
 }
 
@@ -49,4 +50,11 @@
     rgba(37, 37, 37, 0.61),
     #111
   );
+}
+
+@media screen and (max-width: 480px) {
+  .banner_description {
+    font-size: 16px;
+    width: 100%;
+  }
 }

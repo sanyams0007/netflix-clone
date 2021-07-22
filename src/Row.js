@@ -65,7 +65,7 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
       return;
     }
 
-    // getting dynaic url based on input click
+    // getting dynamic url based on input click
     const isMovieOrSeries =
       movie.first_air_date !== undefined ? "/tv/" : "/movie/";
     const finalUrl = `${url}${isMovieOrSeries}${movie.id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&append_to_response=videos,images&include_image_language=en,null`;
@@ -80,7 +80,7 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
     const minute = Number(time) % 60 >= 1 ? `${Number(time) % 60}m` : "";
     const runtime = `${hour} ${minute}`;
 
-    // getting random wall
+    // getting random wallpaper from gallery
     const wall = `${backdrop_url}${
       data.images.backdrops[
         Math.floor(Math.random() * data.images.backdrops.length)
@@ -113,22 +113,22 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
 
       <div className="row_posters">
         {movies.map((movie) => (
-          <div key={movie.id} className="movie_container">
-            <img
-              key={movie.id}
-              onClick={() => handleClick(movie)}
-              className={`row_poster ${isLargeRow && "row_posterLarge"}`}
-              src={
-                isLargeRow
-                  ? `${poster_url}${movie?.poster_path}`
-                  : `${backdrop_url}${movie?.backdrop_path}`
-              }
-              alt={movie.name}
-            />
-            <h5 className="row_movie_title">
+          /* <div key={movie.id} className="movie_container"> */
+          <img
+            key={movie.id}
+            onClick={() => handleClick(movie)}
+            className={`row_poster ${isLargeRow && "row_posterLarge"}`}
+            src={
+              isLargeRow
+                ? `${poster_url}${movie?.poster_path}`
+                : `${backdrop_url}${movie?.backdrop_path}`
+            }
+            alt={movie.name}
+          />
+          /* <h5 className="row_movie_title">
               {movie?.name || movie?.title || movie?.original_name}
-            </h5>
-          </div>
+            </h5> */
+          /*  </div> */
         ))}
       </div>
       {overview && (
@@ -152,7 +152,7 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
                 </div>
                 <div
                   className="movie-meta"
-                  style={{ justifyContent: "flex-start" }}
+                  /* style={{ justifyContent: "flex-start" }} */
                 >
                   <p>Release Date : {feature?.date}</p>
                   <p>Runtime : {feature?.time}</p>
