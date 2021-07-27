@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import axios from "./axios";
-import requests from "./requests";
 import "./Navbar.css";
 
 const Navbar = ({ setSearchResult }) => {
@@ -12,22 +10,6 @@ const Navbar = ({ setSearchResult }) => {
   const getSearchResult = () => {
     if (searchTerm.trim()) {
       history.push(`/search/${searchTerm}`);
-      /* axios
-        .get(`${requests.fetchSearchQuery}${searchTerm}`)
-        .then((response) => {
-          const {
-            data: { results },
-          } = response;
-          const filteredResults = results.filter(
-            (result) => result.media_type !== "person"
-          );
-          console.table(filteredResults);
-          setSearchResult(filteredResults);
-          
-        })
-        .catch((err) => {
-          console.error(err);
-        }); */
     }
   };
 

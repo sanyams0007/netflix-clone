@@ -1,21 +1,30 @@
 .modal_background {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.85);
+  width: 100vw;
+  height: 100vh;
   position: fixed;
   inset: 0 0 0 0;
   z-index: 1000;
 }
 
-.feature_modal {
+.feature {
+  color: #f2f2f2;
+  width: 80%;
+  border-radius: 5px;
+  height: calc(100vh - 100px);
   z-index: 1000;
-  padding: 50px;
   display: flex;
   flex-wrap: wrap;
   position: fixed;
-  background-color: #cc0812;
-  color: #f2f2f2;
+  background: #181818;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  overflow-y: auto;
+}
+
+.feature::-webkit-scrollbar {
+  display: none !important;
 }
 
 .feature > * {
@@ -23,7 +32,7 @@
 }
 
 .right {
-  max-height: 70vh;
+  max-height: 100%;
   text-align: end;
   overflow: hidden;
   position: relative;
@@ -40,17 +49,17 @@
   position: absolute;
   top: 0;
   height: 100%;
-  width: 35%;
+  width: 25%;
   background-image: linear-gradient(
     90deg,
-    #111,
-    rgba(37, 37, 37, 0.61),
+    #181818,
+    rgba(14, 14, 14, 0.6),
     transparent
   );
 }
 
 .left {
-  padding: 0 50px 0 0;
+  padding: 50px 30px 10px;
 }
 
 .left > div {
@@ -105,18 +114,38 @@
   margin: 40px 0 30px;
 }
 
-.play_button {
-  background-color: rgba(109, 109, 110, 0.7);
-  color: #f2f2f2;
+.play_button,
+.close_button {
   cursor: pointer;
   outline: none;
   border: none;
+  font-size: 16px;
+  position: absolute;
+  color: #f2f2f2;
+  z-index: 1;
+  transition: all 0.3s ease-out;
+}
+
+.close_button {
+  top: 2%;
+  right: 2%;
+  padding: 8px 12px;
+  font-size: 18px;
+  border-radius: 50%;
+  margin: 0 5px 0.8em;
+  background: #141414;
+  color: #f2f2f2;
+  border: 1px solid #f2f2f2;
+}
+
+.play_button {
+  background-color: #e50914;
   font-weight: 600;
   border-radius: 6px;
   min-width: 120px;
   padding: 10px 20px;
-  margin-right: 1rem;
-  font-size: 16px;
+  bottom: 10%;
+  left: 1.5em;
 }
 
 .play_button > i {
@@ -124,24 +153,17 @@
 }
 
 .play_button:hover {
-  background-color: #6d6d6e;
-  transition: all 0.2s;
+  background-color: #cc0812;
 }
 
-.play_button:first-of-type {
-  background-color: #e50914;
-}
-.play_button:first-of-type:hover {
-  background-color: #cc0812;
+.close_button:hover {
+  color: #141414;
+  background: #f2f2f2;
 }
 
 @media screen and (max-width: 960px) {
   .feature > * {
     flex: 1 1 100%;
-  }
-
-  .movie-title {
-    margin-top: 15px;
   }
 
   .right {
@@ -156,14 +178,14 @@
     height: 35%;
     background-image: linear-gradient(
       0deg,
-      #111,
-      rgba(37, 37, 37, 0.61),
+      #181818,
+      rgba(14, 14, 14, 0.6),
       transparent
     );
   }
 
   .left {
-    padding: 0 0 0 0;
+    padding: 30px;
   }
 
   .right > img {
@@ -172,10 +194,10 @@
 }
 @media screen and (max-width: 600px) {
   .feature {
-    padding: 20px 20px 0 20px;
+    width: 90%;
   }
 
-  .play_button {
-    margin: 5px;
+  .left {
+    padding: 15px;
   }
 }

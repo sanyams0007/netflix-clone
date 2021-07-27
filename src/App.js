@@ -31,6 +31,15 @@ function App() {
   return (
     <div className="app">
       <Navbar searchResult={searchResult} setSearchResult={setSearchResult} />
+      <Modal
+        open={isOpen}
+        feature={modalData}
+        onClose={() => {
+          setIsOpen(false);
+          document.body.style.overflow = "auto";
+        }}
+        setModalData={setModalData}
+      />
       {keyword ? (
         <>
           <Row
@@ -38,56 +47,60 @@ function App() {
             fetchUrl={`${requests.fetchSearchQuery}${keyword}`}
             isSearchRow
             setOpen={setIsOpen}
+            setModalData={setModalData}
           />
         </>
       ) : (
         <>
           <Banner />
-          <Modal
-            open={isOpen}
-            feature={modalData}
-            onClose={() => setIsOpen(false)}
-          />
           <Row
             title="NETFLIX ORIGINAL"
             fetchUrl={requests.fetchNetflixOriginals}
             isLargeRow
             setOpen={setIsOpen}
+            setModalData={setModalData}
           />
           <Row
             title="Trending Now"
             fetchUrl={requests.fetchTrending}
             setOpen={setIsOpen}
+            setModalData={setModalData}
           />
           <Row
             title="Top Rated"
             fetchUrl={requests.fetchTopRated}
             setOpen={setIsOpen}
+            setModalData={setModalData}
           />
           <Row
             title="Action Movies"
             fetchUrl={requests.fetchActionMovies}
             setOpen={setIsOpen}
+            setModalData={setModalData}
           />
           <Row
             title="Comedy Movies"
             fetchUrl={requests.fetchComedyMovies}
             setOpen={setIsOpen}
+            setModalData={setModalData}
           />
           <Row
             title="Horror Movies"
             fetchUrl={requests.fetchHorrorMovies}
             setOpen={setIsOpen}
+            setModalData={setModalData}
           />
           <Row
             title="Romance Movies"
             fetchUrl={requests.fetchRomanceMovies}
             setOpen={setIsOpen}
+            setModalData={setModalData}
           />
           <Row
             title="Documentaries"
             fetchUrl={requests.fetchDocumentaries}
             setOpen={setIsOpen}
+            setModalData={setModalData}
           />
         </>
       )}
