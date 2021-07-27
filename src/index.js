@@ -13,6 +13,9 @@ ReactDOM.render(
         <Route path="/app">
           <App />
         </Route>
+        <Route path="/search/:keyword">
+          <App />
+        </Route>
         <Route path="/">
           <Landing />
         </Route>

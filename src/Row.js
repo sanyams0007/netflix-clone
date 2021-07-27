@@ -8,7 +8,7 @@ const poster_url = "https://image.tmdb.org/t/p/w500/";
 const backdrop_url = "https://image.tmdb.org/t/p/w780/";
 const url = `https://api.themoviedb.org/3`;
 
-const Row = ({ title, fetchUrl, isLargeRow }) => {
+const Row = ({ title, fetchUrl, isLargeRow, isSearchRow, setOpen }) => {
   const [movies, setMovies] = useState([]);
   const [trailerUrl, setTrailerUrl] = useState("");
   const [overview, setOverview] = useState(false);
@@ -32,9 +32,14 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
   useEffect(() => {
     //if [] run once when the row loads, and dont run again
     async function fetchData() {
-      const request = await axios.get(fetchUrl);
-      setMovies(request.data.results);
-      return request;
+      let {
+        data: { results },
+      } = await axios.get(fetchUrl);
+      if (isSearchRow) {
+        results = results.filter((result) => result.media_type !== "person");
+      }
+      setMovies(results);
+      return results;
     }
     fetchData();
   }, [fetchUrl]);
@@ -80,7 +85,7 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
     const minute = Number(time) % 60 >= 1 ? `${Number(time) % 60}m` : "";
     const runtime = `${hour} ${minute}`;
 
-    // getting random wallpaper from gallery
+    // getting random wallpaper from movie gallery
     const wall = `${backdrop_url}${
       data.images.backdrops[
         Math.floor(Math.random() * data.images.backdrops.length)
@@ -105,19 +110,19 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
     });
     setTrailerUrl("");
     setOverview(true);
+    setOpen(true);
   };
 
   return (
-    <div className="row">
+    <div className={`row ${isSearchRow && "row_search"}`}>
       <h2>{title}</h2>
 
-      <div className="row_posters">
+      <div className={`row_posters ${isSearchRow && "row_search_posters"}`}>
         {movies.map((movie) => (
-          /* <div key={movie.id} className="movie_container"> */
           <img
             key={movie.id}
             onClick={() => handleClick(movie)}
-            className={`row_poster ${isLargeRow && "row_posterLarge"}`}
+            className={`row_poster ${isLargeRow ? "row_posterLarge" : ""}`}
             src={
               isLargeRow
                 ? `${poster_url}${movie?.poster_path}`
@@ -125,30 +130,28 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
             }
             alt={movie.name}
           />
-          /* <h5 className="row_movie_title">
-              {movie?.name || movie?.title || movie?.original_name}
-            </h5> */
-          /*  </div> */
         ))}
       </div>
+      {/*  {overview && <Modal feature={feature}/>} */}
       {overview && (
         <>
           {feature && (
-            <div className={`feature`}>
+            <div className="feature">
               <div className="left">
-                <h2>
+                <h2 className="movie-title">
                   {feature?.title}({feature?.status})
                 </h2>
                 {feature?.tagline && (
                   <h3 className="tagline">{feature?.tagline}</h3>
                 )}
                 <div className="movie-genre">
-                  <p>
-                    Genres :{" "}
-                    {feature?.genres.map((genre) => (
-                      <span key={genre?.name}>{genre?.name}</span>
-                    ))}
-                  </p>
+                  <span>Genres : </span>
+
+                  {feature?.genres.map((genre) => (
+                    <span className="genre-name" key={genre?.name}>
+                      {genre?.name}
+                    </span>
+                  ))}
                 </div>
                 <div
                   className="movie-meta"
@@ -160,17 +163,16 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
                 </div>
 
                 <div className="movie-lang">
-                  <p>
-                    Available In :{" "}
-                    {feature?.spoken_lang.map((lang) => (
-                      <span
-                        style={{ color: "#d72323" }}
-                        key={lang?.english_name}
-                      >
-                        {lang?.english_name}
-                      </span>
-                    ))}
-                  </p>
+                  <span>Available In : </span>
+                  {feature?.spoken_lang.map((lang) => (
+                    <span
+                      className="lang-name"
+                      style={{ color: "#d72323" }}
+                      key={lang?.english_name}
+                    >
+                      {lang?.english_name}
+                    </span>
+                  ))}
                 </div>
                 <p className="movie-plot">{feature?.plot}</p>
 
@@ -185,12 +187,14 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
                   className="play_button"
                   onClick={() => playTrailer(feature?.title)}
                 >
+                  <i className="fas fa-play"></i>
                   Play
                 </button>
                 <button
                   className="play_button"
                   onClick={() => setOverview(false)}
                 >
+                  <i className="fas fa-times"></i>
                   Close
                 </button>
                 {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}

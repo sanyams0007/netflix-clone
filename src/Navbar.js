@@ -1,53 +1,70 @@
 import React, { useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import axios from "./axios";
+import requests from "./requests";
 import "./Navbar.css";
 
-const Navbar = ({ setSearchData, searchData }) => {
+const Navbar = ({ setSearchResult }) => {
   const [show, handleShow] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-
-  useEffect(() => {
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 100) {
-        handleShow(true);
-      } else handleShow(false);
-    });
-    return () => {
-      window.removeEventListener("scroll");
-    };
-  }, []);
+  const history = useHistory();
 
   const getSearchResult = () => {
-    if (searchTerm) {
-      fetch(
-        `https://api.themoviedb.org/3/search/multi?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${searchTerm}`
-      )
-        .then((res) => res.json())
-        .then(({ results }) => {
-          console.table(results);
-          setSearchData(results);
+    if (searchTerm.trim()) {
+      history.push(`/search/${searchTerm}`);
+      /* axios
+        .get(`${requests.fetchSearchQuery}${searchTerm}`)
+        .then((response) => {
+          const {
+            data: { results },
+          } = response;
+          const filteredResults = results.filter(
+            (result) => result.media_type !== "person"
+          );
+          console.table(filteredResults);
+          setSearchResult(filteredResults);
+          
         })
-        .catch((err) => console.error(err));
+        .catch((err) => {
+          console.error(err);
+        }); */
     }
   };
 
+  const isVisible = () => {
+    if (window.scrollY > 100) {
+      handleShow(true);
+    } else handleShow(false);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", isVisible);
+    return () => {
+      window.removeEventListener("scroll", isVisible);
+    };
+  }, []);
+
   return (
     <div className={`nav ${show && "nav_black"}`}>
-      <img
-        className="nav_logo"
-        src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
-        alt="Netflix Logo"
-      />
+      <Link to="/app">
+        <img
+          className="nav_logo"
+          src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
+          alt="Netflix Logo"
+        />
+      </Link>
 
       <div className="searchbar">
+        <button onClick={getSearchResult}>
+          <i className="fas fa-search"></i>
+        </button>
         <input
+          className="search-input"
           type="text"
           placeholder="Search titles, people"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <button onClick={getSearchResult}>
-          <i class="fas fa-search"></i>
-        </button>
       </div>
       <img
         className="nav_avatar"
