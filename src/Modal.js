@@ -1,28 +1,29 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import YouTube from "react-youtube";
-import movieTrailer from "movie-trailer";
+/* import YouTube from "react-youtube";
+import movieTrailer from "movie-trailer"; */
 import "./Modal.css";
 
 export default function Modal({ open, feature, onClose }) {
-  const [trailerUrl, setTrailerUrl] = useState("");
+  const [trailerUrl, setTrailerUrl] = useState(false);
 
-  const opts = {
+  /* const opts = {
     height: "500",
     width: "100%",
     playerVars: {
       autoplay: 1,
     },
-  };
+  }; 
 
   const playTrailer = (movieTitle) => {
-    movieTrailer(movieTitle || "")
+     movieTrailer(movieTitle || "")
       .then((url) => {
         const urlParams = new URLSearchParams(new URL(url).search);
         setTrailerUrl(urlParams.get("v"));
       })
-      .catch((error) => console.log(error));
-  };
+      .catch((error) => console.log(error)); 
+   
+  }; */
 
   if (!open) return null;
 
@@ -74,9 +75,7 @@ export default function Modal({ open, feature, onClose }) {
         <div className="right">
           <button
             className="play_button"
-            onClick={() =>
-              trailerUrl ? setTrailerUrl("") : playTrailer(feature?.title)
-            }
+            onClick={() => setTrailerUrl((prev) => !prev)}
           >
             <i className={`fas fa-${trailerUrl ? "times" : "play"}`}></i>
             {trailerUrl ? "Close" : "Play"}
@@ -84,7 +83,7 @@ export default function Modal({ open, feature, onClose }) {
           <button
             className="close_button"
             onClick={() => {
-              setTrailerUrl("");
+              setTrailerUrl(false);
               onClose();
             }}
           >
@@ -94,12 +93,23 @@ export default function Modal({ open, feature, onClose }) {
           <div className="poster-fadeleft"></div>
         </div>
         {trailerUrl && (
-          <div>
-            <YouTube videoId={trailerUrl} opts={opts} />{" "}
-          </div>
+          <>
+            {/* <div>
+              <YouTube videoId={trailerUrl} opts={opts} />{" "}
+            </div> */}
+            <div>
+              <iframe
+                title="Trailer Video"
+                style={{ border: "none" }}
+                width="100%"
+                height="500"
+                src={`https://www.youtube.com/embed/${feature?.video.key}?autoplay=1`}
+              ></iframe>
+            </div>
+          </>
         )}
       </div>
     </>,
-    document.getElementById("portal")
+    document.getElementById("modal")
   );
 }

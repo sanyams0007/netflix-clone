@@ -26,6 +26,7 @@ const Row = ({
         results = results.filter((result) => result.media_type !== "person");
       }
       setMovies(results);
+      console.log(results);
       return results;
     }
     fetchData();
@@ -56,6 +57,14 @@ const Row = ({
         ].file_path
       }`;
 
+    // getting random trailer or teaser from movie videos
+    const trailer = data?.videos?.results.filter(
+      ({ type }) => type === "Trailer"
+    );
+
+    const videoURL =
+      trailer.length > 0 && trailer[Math.floor(Math.random() * trailer.length)];
+
     setModalData({
       id: data?.id,
       title: data?.name || data?.title || data?.original_name,
@@ -71,6 +80,7 @@ const Row = ({
       status: data?.status,
       ratings: data?.vote_average,
       tagline: data?.tagline,
+      video: videoURL,
     });
 
     setOpen(true);

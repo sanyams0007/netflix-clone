@@ -23,6 +23,7 @@ function App() {
     status: "",
     ratings: 0,
     tagline: "",
+    video: "",
   });
 
   const { keyword } = useParams();
