@@ -8,7 +8,6 @@ import Navbar from "./Navbar";
 import Modal from "./Modal";
 
 function App() {
-  const [searchResult, setSearchResult] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [modalData, setModalData] = useState({
     id: "",
@@ -30,14 +29,11 @@ function App() {
 
   return (
     <div className="app">
-      <Navbar searchResult={searchResult} setSearchResult={setSearchResult} />
+      <Navbar />
       <Modal
         open={isOpen}
         feature={modalData}
-        onClose={() => {
-          setIsOpen(false);
-          document.body.style.overflow = "auto";
-        }}
+        onClose={() => setIsOpen(false)}
         setModalData={setModalData}
       />
       {keyword ? (

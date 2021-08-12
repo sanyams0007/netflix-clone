@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "./Navbar.css";
 
-const Navbar = ({ setSearchResult }) => {
+const Navbar = () => {
   const [show, handleShow] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const history = useHistory();

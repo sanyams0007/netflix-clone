@@ -4,7 +4,6 @@ import "./Row.css";
 
 const poster_url = "https://image.tmdb.org/t/p/w500/";
 const backdrop_url = "https://image.tmdb.org/t/p/w780/";
-const url = `https://api.themoviedb.org/3`;
 
 const Row = ({
   title,
@@ -17,8 +16,8 @@ const Row = ({
   const [movies, setMovies] = useState([]);
 
   // a snippet of code which runs based on a condition
+  //if [] run once when the row loads, and dont run again
   useEffect(() => {
-    //if [] run once when the row loads, and dont run again
     async function fetchData() {
       let {
         data: { results },
@@ -30,13 +29,13 @@ const Row = ({
       return results;
     }
     fetchData();
-  }, [fetchUrl]);
+  }, [fetchUrl, isSearchRow]);
 
   const handleClick = async (movie) => {
-    // getting dynamic url based on input click
+    // getting dynamic movie or tv data
     const isMovieOrSeries =
       movie.first_air_date !== undefined ? "/tv/" : "/movie/";
-    const finalUrl = `${url}${isMovieOrSeries}${movie.id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&append_to_response=videos,images&include_image_language=en,null`;
+    const finalUrl = `${isMovieOrSeries}${movie.id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&append_to_response=videos,images&include_image_language=en,null`;
     const { data } = await axios.get(finalUrl);
 
     // converting time from minutes to hours and minutes
@@ -78,10 +77,10 @@ const Row = ({
   };
 
   return (
-    <div className={`row ${isSearchRow && "row_search"}`}>
+    <div className={`row ${isSearchRow ? "row_search" : ""}`}>
       <h2>{title}</h2>
 
-      <div className={`row_posters ${isSearchRow && "row_search_posters"}`}>
+      <div className={`row_posters ${isSearchRow ? "row_search_posters" : ""}`}>
         {movies.map((movie) => (
           <img
             key={movie.id}
@@ -92,7 +91,7 @@ const Row = ({
                 ? `${poster_url}${movie?.poster_path}`
                 : `${backdrop_url}${movie?.backdrop_path}`
             }
-            alt={movie.name}
+            alt={movie.name || movie.title}
           />
         ))}
       </div>
