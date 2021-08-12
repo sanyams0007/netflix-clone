@@ -26,7 +26,7 @@ const Row = ({
         results = results.filter((result) => result.media_type !== "person");
       }
       setMovies(results);
-      console.log(results);
+
       return results;
     }
     fetchData();
@@ -95,7 +95,9 @@ const Row = ({
           <img
             key={movie.id}
             onClick={() => handleClick(movie)}
-            className={`row_poster ${isLargeRow ? "row_posterLarge" : ""}`}
+            className={`row_poster ${isLargeRow ? "row_posterLarge" : ""} ${
+              isSearchRow ? "row_search_poster" : ""
+            } `}
             src={
               isLargeRow
                 ? `${poster_url}${movie?.poster_path}`

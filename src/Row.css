@@ -19,8 +19,8 @@
 }
 
 .row_search_posters {
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 
 .row_poster {
@@ -29,6 +29,13 @@
   margin: 15px;
   max-height: 200px;
   transition: transform 250ms;
+}
+
+.row_search_poster {
+  max-width: 100%;
+  margin: 0;
+  max-height: unset;
+  padding: 20px;
 }
 
 .row_poster:hover {
@@ -44,5 +51,5 @@
 }
 
 .row_search {
-  padding-top: 60px;
+  padding: 100px 20px;
 }
